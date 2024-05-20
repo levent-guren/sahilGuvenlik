@@ -16,20 +16,26 @@ import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.ToString;
 
 @Entity
 @Data
 @Table
+@ToString(exclude = { "baskanlik" })
 public class Personel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@NotNull
 	private String adi;
+
 	@NotNull
 	private String soyadi;
+
 	@Column(name = "ise_giris")
+
 	@NotNull
+
 	@Temporal(TemporalType.DATE)
 	private Date iseGiris;
 
@@ -37,16 +43,18 @@ public class Personel {
 	private Integer yas;
 
 	@Column(name = "kayit_tarihi")
+
 	@NotNull
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date kayitTarihi;
 
 	@Column(name = "son_guncelleme")
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date sonGuncelleme;
 
-	@ManyToOne
-	// @JoinColumn(name = "baskanlik_id", referencedColumnName = "id")
+	@ManyToOne // @JoinColumn(name = "baskanlik_id", referencedColumnName = "id")
 	private Baskanlik baskanlik;
 
 	@PrePersist
@@ -58,4 +66,5 @@ public class Personel {
 	public void kayitGuncelleme() {
 		sonGuncelleme = new Date();
 	}
+
 }
