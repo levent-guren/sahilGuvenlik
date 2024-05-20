@@ -9,8 +9,11 @@
 </h:head>
 <h:body>
 	<h:form>
-		<h:commandButton action="baskanlikYarat" value="Başkanlık Yarat" />
-		<h:commandButton action="baskanliklar" value="Başkanlıklar" />
+		<h:panelGrid columns="1">
+			<h:commandButton action="baskanlikYarat" value="Başkanlık Yarat" />
+			<h:commandButton action="baskanliklar" value="Başkanlıklar" />
+			<h:commandButton action="personel" value="Başkanlık Personelleri" />
+		</h:panelGrid>
 	</h:form>
 </h:body>
 </html>

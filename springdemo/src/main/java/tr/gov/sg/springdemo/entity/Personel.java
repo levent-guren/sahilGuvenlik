@@ -1,4 +1,4 @@
-package entity;
+package tr.gov.sg.springdemo.entity;
 
 import java.util.Date;
 
@@ -17,8 +17,6 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.ToString;
 
@@ -37,25 +35,18 @@ public class Personel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@NotNull
 	private String adi;
 
-	@NotNull
 	private String soyadi;
 
 	@Column(name = "ise_giris")
 
-	@NotNull
-
 	@Temporal(TemporalType.DATE)
 	private Date iseGiris;
 
-	@Min(1)
 	private Integer yas;
 
 	@Column(name = "kayit_tarihi")
-
-	@NotNull
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date kayitTarihi;

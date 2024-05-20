@@ -1,12 +1,12 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import entity.Personel;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.transaction.Transactional;
 import lombok.Data;
 import service.PersonelService;
 
@@ -15,12 +15,12 @@ import service.PersonelService;
 @Data
 public class PersonelController {
 	private int seciliBaskanlikId;
+	private List<Personel> baskanlikPersonelleri = new ArrayList<Personel>();
+
 	@Inject
 	private PersonelService personelService;
 
-	@Transactional
 	public void getPersoneller() {
-		List<Personel> personeller = personelService.getPersoneller(seciliBaskanlikId);
-		personeller.forEach(System.out::println);
+		baskanlikPersonelleri = personelService.getPersoneller(seciliBaskanlikId);
 	}
 }

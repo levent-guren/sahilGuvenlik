@@ -2,23 +2,26 @@ package service;
 
 import java.util.List;
 
-import dao.BaskanlikDAO;
-import entity.Baskanlik;
+import dao.PersonelDAO;
 import entity.Personel;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.transaction.Transactional;
 
 @Named
 @RequestScoped
 public class PersonelService {
+//	@Inject
+//	private BaskanlikDAO baskanlikDAO;
 	@Inject
-	private BaskanlikDAO baskanlikDAO;
+	private PersonelDAO personelDAO;
 
-	@Transactional
+	// @Transactional
 	public List<Personel> getPersoneller(int baskanlikId) {
-		Baskanlik baskanlik = baskanlikDAO.getBaskanlik(baskanlikId);
-		return baskanlik.getPersoneller();
+//		Baskanlik baskanlik = baskanlikDAO.getBaskanlik(baskanlikId);
+//		baskanlik.getPersoneller().forEach(p -> {
+//		});
+//		return baskanlik.getPersoneller();
+		return personelDAO.getPersoneller(baskanlikId);
 	}
 }
