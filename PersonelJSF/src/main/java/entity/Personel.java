@@ -65,6 +65,10 @@ public class Personel {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date sonGuncelleme;
 
+	// @Size(min = 11, max = 11)
+	@NotNull
+	private String tcKimlikNo;
+
 	@ManyToOne // @JoinColumn(name = "baskanlik_id", referencedColumnName = "id")
 	private Baskanlik baskanlik;
 

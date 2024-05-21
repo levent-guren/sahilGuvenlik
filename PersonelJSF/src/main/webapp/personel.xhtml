@@ -18,6 +18,10 @@
 	   </h:selectOneMenu>
 	   <h:dataTable id="personelTablosu" value="#{pc.baskanlikPersonelleri}" var="personel">
 	        <h:column>
+	        	<f:facet name="header">T.C. Kimlik No</f:facet>
+	        	<h:outputText value="#{personel.tcKimlikNo}" />
+	        </h:column>
+	        <h:column>
 	        	<f:facet name="header">Adı</f:facet>
 	        	<h:outputText value="#{personel.adi}" />
 	        </h:column>

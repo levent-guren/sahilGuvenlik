@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+</h:head>
+<h:body>
+	<h2>Personel Yarat</h2>
+	<h:messages />
+	<h:form prependId="false">
+	  <h:panelGrid columns="2">
+	  	  <h:outputLabel value="T.C. Kimlik No:" />
+	  	  <h:inputText value="#{pc.personelYaratModel.tcKimlikNo}" validatorMessage="Geçerli bir T.C. Kimlik no girilmelidir.">
+	  	  	<f:validator validatorId="tcKimlikNoValidator"/>
+	  	  </h:inputText>	  	  
+	  
+	  	  <h:outputLabel value="Adı" />
+	  	  <h:inputText value="#{pc.personelYaratModel.adi}" validatorMessage="Adı en az 2 karakter olmalıdır ve içinde sadece harf bulunmalıdır.">
+	  	  	<f:validateRegex pattern="[A-Za-z ıİĞÜŞÖÇğüşöç]{2,}" />
+	  	  </h:inputText>	  	  
+	  	  <h:outputLabel value="Soyadı" />
+	  	  <h:inputText value="#{pc.personelYaratModel.soyadi}" required="true" requiredMessage="Soyadı alanı boş geçilemez."/>
+	  	  <h:outputLabel value="Yaş" />
+	  	  <h:inputText value="#{pc.personelYaratModel.yas}"/>
+	  	  <h:outputLabel value="İşe Giriş Tarihi" />
+	  	  <h:inputText value="#{pc.personelYaratModel.iseGirisTarihi}">
+	  	  	<f:converter converterId="dateConverter"/>
+	  	  </h:inputText>
+	  	  <h:outputLabel value="Başkanlık" />
+	  	  <h:selectOneMenu id="baskanlikCmb" value="#{pc.personelYaratModel.baskanlikId}" validatorMessage="Lütfen başkanlık seçiniz.">
+	  	        <f:validateLongRange minimum="1" />
+	  	  		<f:selectItem itemLabel="Başkanlık Seçiniz..." itemValue="0" />
+	  	  		<f:selectItems 
+		   		  value="#{bc.tumBaskanliklar}"
+		   		  var="baskanlik"
+		   		  itemLabel="#{baskanlik.ad}"
+		   		  itemValue="#{baskanlik.id}"
+		   		/>
+	  	  </h:selectOneMenu>
+	  	  <h:message for="baskanlikCmb" />
+	  </h:panelGrid>
+	  <br/>
+	  <h:commandButton action="#{pc.personelYarat}" value="Personel Yarat"/>
+	</h:form>
+</h:body>
+</html>

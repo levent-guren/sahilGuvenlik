@@ -8,6 +8,7 @@ import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import util.Security;
 
 @Named
 @RequestScoped
@@ -39,7 +40,16 @@ public class PersonelDAO {
 
 		Query query = em.createNativeQuery("select * from personel where baskanlik_id = :bid", Personel.class);
 		query.setParameter("bid", baskanlikId);
+		List<Personel> personeller = query.getResultList();
+		personeller.forEach(p -> p.setTcKimlikNo(Security.decryp(p.getTcKimlikNo())));
+		return personeller;
+	}
 
-		return query.getResultList();
+	public void personelKaydet(Personel personel) {
+//		EntityTransaction tx = em.getTransaction();
+//		tx.begin();
+		personel.setTcKimlikNo(Security.encryp(personel.getTcKimlikNo()));
+		em.persist(personel);
+//		tx.commit();
 	}
 }
