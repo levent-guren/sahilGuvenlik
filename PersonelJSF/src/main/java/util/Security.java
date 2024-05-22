@@ -5,9 +5,12 @@ import java.util.Base64;
 import org.jasypt.exceptions.AlreadyInitializedException;
 import org.jasypt.properties.PropertyValueEncryptionUtils;
 import org.jasypt.util.text.AES256TextEncryptor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class Security {
 	private static AES256TextEncryptor textEncrypter = new AES256TextEncryptor();
+	private static BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
 	static {
 		try {
 			textEncrypter.setPassword(getBase64Decoded("U2FoaWxHdXZlbmxpaw=="));
@@ -17,6 +20,14 @@ public class Security {
 	}
 
 	private Security() {
+	}
+
+	public static String encryptPassword(String password) {
+		return passwordEncoder.encode(password);
+	}
+
+	public static boolean isPasswordValid(String password, String dbPassword) {
+		return passwordEncoder.matches(password, dbPassword);
 	}
 
 	public static String getBase64Decoded(String text) {
@@ -35,9 +46,8 @@ public class Security {
 	}
 
 	public static void main(String[] args) {
-		String tc = encryp("12345678901");
+		String tc = encryptPassword("12345678901");
 		System.out.println(tc);
-		System.out.println(tc.length());
 
 	}
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import config.ModelMapperConfig;
 import entity.Baskanlik;
 import entity.Personel;
+import exception.ServiceException;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
@@ -37,9 +38,15 @@ public class PersonelController {
 		Baskanlik baskanlik = new Baskanlik();
 		baskanlik.setId(personelYaratModel.getBaskanlikId());
 		personel.setBaskanlik(baskanlik);
-		personelService.personelKaydet(personel);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Personel Oluşturuldu"));
-		return "index";
+		try {
+			personelService.personelKaydet(personel);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Personel Oluşturuldu"));
+			return "index";
+		} catch (ServiceException e) {
+			e.printStackTrace();
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(e.getMessage()));
+			return null;
+		}
 	}
 
 }

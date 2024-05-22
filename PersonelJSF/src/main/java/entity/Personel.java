@@ -19,6 +19,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.ToString;
 
@@ -65,7 +66,7 @@ public class Personel {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date sonGuncelleme;
 
-	// @Size(min = 11, max = 11)
+	@Size(min = 11, max = 11)
 	@NotNull
 	private String tcKimlikNo;
 

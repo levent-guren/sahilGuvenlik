@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.PersonelDAO;
 import entity.Personel;
+import exception.ServiceException;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -27,7 +28,12 @@ public class PersonelService {
 	}
 
 	@Transactional
-	public void personelKaydet(Personel personel) {
+	public void personelKaydet(Personel personel) throws ServiceException {
+		// aynı T.C. Kimlik numarasına sahip personel var mı?
+		if (personelDAO.getPersonelSayisiByTCNo(personel.getTcKimlikNo()) != 0) {
+			// aynı T.C. Kimlik numarasına sahip personel var
+			throw new ServiceException("Aynı T.C. Kimlik numarasına sahip personel var");
+		}
 		personelDAO.personelKaydet(personel);
 	}
 }
