@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf17152516851860" configfile="/PersonelJSF/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="baskanlikYarat.xhtml" x="36" y="72" id="pf17152518064231" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf17152518064232" path="/baskanlikYarat.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="mesaj.xhtml" x="384" y="84" id="pf17152518064233" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf17152518064232" path="/mesaj.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="*" id="pf17152518722844" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf17152518722845" path="*"/>
-  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" id="pf17152518722846" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf17152518722845" path="/index.xhtml"/>
-  <links id="pf17152518064232" target="pf17152518064233" source="pf17152518064231" outcome="basarili"/>
-  <links id="pf17152518722845" target="pf17152518722846" source="pf17152518722844" outcome="anaSayfa"/>
-</pageflow:Pageflow>

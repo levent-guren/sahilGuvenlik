@@ -5,20 +5,20 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</h:head>
-<h:body>
+<ui:composition template="sablon.xhtml">
+	<ui:define name="title">Başkanlık Yarat</ui:define>
+	<ui:define name="content">
 	<h2>Başkanlık Yarat</h2>
-	<h:form>
-	  <h:panelGrid columns="2">
-	  	  <h:outputLabel value="Başkanlık Adı" />
-	  	  <h:inputText value="#{bc.baskanlikModel.ad}"/>
-	  	  <h:outputLabel value="İl adı" />
-	  	  <h:inputText value="#{bc.baskanlikModel.il}"/>
-	  </h:panelGrid>
-	  <br/>
-	  <h:commandButton action="#{bc.baskanlikYarat}" value="Başkanlık Yarat"/>
-	</h:form>
-</h:body>
+		<h:form>
+		  <h:panelGrid columns="2">
+		  	  <h:outputLabel value="Başkanlık Adı" />
+		  	  <h:inputText value="#{bc.baskanlikModel.ad}"/>
+		  	  <h:outputLabel value="İl adı" />
+		  	  <h:inputText value="#{bc.baskanlikModel.il}"/>
+		  </h:panelGrid>
+		  <br/>
+		  <h:commandButton action="#{bc.baskanlikYarat}" value="Başkanlık Yarat"/>
+		</h:form>
+	</ui:define>
+</ui:composition>
 </html>

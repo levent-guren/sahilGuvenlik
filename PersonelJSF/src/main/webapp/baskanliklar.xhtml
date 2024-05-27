@@ -2,21 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-</h:head>
-<h:body>
-	<h:dataTable value="#{bc.tumBaskanliklar}" var="baskanlik">
-	
-	  <h:column>
-	    <f:facet name="header">Adı</f:facet>
-	    #{baskanlik.ad}
-	  </h:column>
-	  <h:column>
-	    <f:facet name="header">İl</f:facet>
-	    #{baskanlik.il}
-	  </h:column>
-	  
-	</h:dataTable>
-</h:body>
+<ui:composition template="sablon.xhtml">
+	<ui:define name="title">Başkanlıklar</ui:define>
+	<ui:define name="content">
+		<p:dataTable value="#{bc.tumBaskanliklar}" var="baskanlik">
+		  <p:column headerText="Adı">
+		    <h:outputText value="#{baskanlik.ad}" /> 
+		  </p:column>
+		  <p:column headerText="İl">
+		    <h:outputText value="#{baskanlik.il}" /> 
+		  </p:column>
+		</p:dataTable>
+	</ui:define>
+</ui:composition>
 </html>

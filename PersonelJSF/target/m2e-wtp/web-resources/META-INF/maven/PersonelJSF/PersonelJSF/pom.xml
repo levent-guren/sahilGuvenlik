@@ -8,24 +8,9 @@
 	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>jakarta.faces</artifactId>
-			<version>3.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.weld.servlet</groupId>
-			<artifactId>weld-servlet-shaded</artifactId>
-			<version>4.0.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>jakarta.servlet.jsp.jstl</groupId>
-			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-			<version>2.0.0</version>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
-			<version>3.2.5</version>
+			<version>3.2.6</version>
 		</dependency>
 
 		<dependency>
@@ -56,32 +41,26 @@
 			<classifier>jakarta</classifier>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<version>3.2.6</version>
+		</dependency>
+		<!-- AES256TextEncryptor için -->
+		<dependency>
 			<groupId>org.jasypt</groupId>
 			<artifactId>jasypt</artifactId>
 			<version>1.9.3</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-			<version>3.2.5</version>
-		</dependency>
 
 	</dependencies>
+
 	<build>
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</resource>
-		</resources>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
-					<release>17</release>
+					<release>21</release>
 				</configuration>
 			</plugin>
 			<plugin>
